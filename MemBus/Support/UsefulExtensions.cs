@@ -27,7 +27,23 @@ namespace MemBus.Support
         /// </summary>
         public static IEnumerable<T> AsEnumerable<T>(this T item)
         {
-            return new[] {item};
+            yield return item;
+        }
+
+        /// <summary>
+        /// LINQ extension method to get a HashSet
+        /// </summary>
+        public static HashSet<T> ToHashSet<T>(this IEnumerable<T> items)
+        {
+            return new HashSet<T>(items);
+        }
+
+        /// <summary>
+        /// LINQ extension method to get a HashSet with a Select Func
+        /// </summary>
+        public static HashSet<O> ToHashSet<T,O>(this IEnumerable<T> items, Func<T,O> select)
+        {
+            return new HashSet<O>(items.Select(select));
         }
 
         /// <summary>

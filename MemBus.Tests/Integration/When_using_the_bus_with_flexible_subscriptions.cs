@@ -1,12 +1,11 @@
 using System;
-using System.Collections.Generic;
 using MemBus.Configurators;
 using MemBus.Subscribing;
 using MemBus.Tests.Help;
 using NUnit.Framework;
 using MemBus.Tests.Frame;
 
-namespace MemBus.Tests
+namespace MemBus.Tests.Integration
 {
     [TestFixture]
     public class When_using_the_bus_with_flexible_subscriptions

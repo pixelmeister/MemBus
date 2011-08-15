@@ -54,7 +54,12 @@
     <Compile Include="Help\SomeCrazyHandler.cs" />
     <Compile Include="Help\SomeHandler.cs" />
     <Compile Include="Integration_scenario_interaction_with_subscriber.cs" />
+    <Compile Include="OfTypeTree\full_tree_retrieval.cs" />
+    <Compile Include="OfTypeTree\Type_tree_context.cs" />
+    <Compile Include="OfTypeTree\type_tree_hierarchy_1.cs" />
+    <Compile Include="OfTypeTree\type_tree_hierarchy_2.cs" />
     <Compile Include="Using_SubscriptionAdapter_Service.cs" />
+    <Compile Include="OfTypeTree\Using_the_type_tree.cs" />
     <Compile Include="When_using_standard_resolver.cs" />
     <Compile Include="Documentation_tests.cs" />
     <Compile Include="Frame\PublishPipelineTester.cs" />
@@ -79,8 +84,8 @@
     <Compile Include="Using_subscription_shapes.cs" />
     <Compile Include="When_Resolving_Subscriptions.cs" />
     <Compile Include="When_using_dynamics.cs" />
-    <Compile Include="When_using_the_bus.cs" />
-    <Compile Include="When_using_the_bus_with_flexible_subscriptions.cs" />
+    <Compile Include="Integration\When_using_the_bus.cs" />
+    <Compile Include="Integration\When_using_the_bus_with_flexible_subscriptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MemBus.Addons\MemBus.Addons.csproj">
