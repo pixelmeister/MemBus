@@ -73,7 +73,7 @@ namespace MemBus
                 Add(s);
         }
 
-        private void Remove(ISubscription subscription)
+        public void Remove(ISubscription subscription)
         {
             IDisposableSubscription d;
             subscriptions.TryRemove(subscription.GetHashCode(), out d);

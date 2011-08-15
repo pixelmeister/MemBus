@@ -22,10 +22,11 @@ namespace MemBus.Support
             }
         }
 
-        public void AddNode(Type type)
+        public TypeNode AddNode(Type type)
         {
-            var node = new TypeNode(type);
+            var node = this[type] ?? new TypeNode(type);
             AddNode(node);
+            return node;
         }
 
         private void AddNode(TypeNode node)

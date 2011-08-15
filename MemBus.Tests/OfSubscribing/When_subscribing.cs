@@ -5,7 +5,7 @@ using MemBus.Tests.Help;
 using NUnit.Framework;
 using MemBus.Tests.Frame;
 
-namespace MemBus.Tests
+namespace MemBus.Tests.OfSubscribing
 {
     [TestFixture]
     public class When_subscribing

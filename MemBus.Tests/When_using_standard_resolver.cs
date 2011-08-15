@@ -15,10 +15,10 @@ namespace MemBus.Tests
         }
 
         [Test]
-        public void Caching_resolver_accepts_and_returns_subscriptions()
+        public void resolver_accepts_and_returns_subscriptions()
         {
             var sub = Helpers.MockSubscriptionThatHandles<MessageA>();
-            var r = new StandardResolver();
+            var r = GetResolver();
             r.Add(sub.Object);
             var subs = r.GetSubscriptionsFor(new MessageA()).ToList();
             subs.ShouldHaveCount(1);

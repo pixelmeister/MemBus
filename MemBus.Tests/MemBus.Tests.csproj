@@ -60,13 +60,14 @@
     <Compile Include="OfTypeTree\type_tree_hierarchy_2.cs" />
     <Compile Include="Using_SubscriptionAdapter_Service.cs" />
     <Compile Include="OfTypeTree\Using_the_type_tree.cs" />
+    <Compile Include="When_using_caching_resolver.cs" />
     <Compile Include="When_using_standard_resolver.cs" />
     <Compile Include="Documentation_tests.cs" />
     <Compile Include="Frame\PublishPipelineTester.cs" />
     <Compile Include="Help\BusSetupPutShapeOnMsgA.cs" />
     <Compile Include="Help\BusSetupWithDefaultShape.cs" />
     <Compile Include="Help\BusSetupWithTestShapers.cs" />
-    <Compile Include="When_subscribing.cs" />
+    <Compile Include="OfSubscribing\When_subscribing.cs" />
     <Compile Include="When_using_disposable_buses.cs" />
     <Compile Include="When_using_the_bus_in_the_ui.cs" />
     <Compile Include="Frame\Helpers.cs" />
@@ -81,8 +82,8 @@
     <Compile Include="Using_Composite_Subscription.cs" />
     <Compile Include="Using_disposable_method_subscription.cs" />
     <Compile Include="Using_Publish_Pipeline.cs" />
-    <Compile Include="Using_subscription_shapes.cs" />
-    <Compile Include="When_Resolving_Subscriptions.cs" />
+    <Compile Include="OfSubscribing\Using_subscription_shapes.cs" />
+    <Compile Include="OfSubscribing\When_Resolving_Subscriptions.cs" />
     <Compile Include="When_using_dynamics.cs" />
     <Compile Include="Integration\When_using_the_bus.cs" />
     <Compile Include="Integration\When_using_the_bus_with_flexible_subscriptions.cs" />
