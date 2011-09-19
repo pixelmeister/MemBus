@@ -1,4 +1,5 @@
 using System;
+using MemBus.Support;
 
 namespace MemBus.Subscribing
 {

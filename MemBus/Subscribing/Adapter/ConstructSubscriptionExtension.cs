@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace MemBus.Subscribing
 {
@@ -12,10 +13,13 @@ namespace MemBus.Subscribing
             var parameterType = info.GetParameters()[0].ParameterType;
 
             var fittingDelegateType = typeof(Action<>).MakeGenericType(parameterType);
-            var @delegate = Delegate.CreateDelegate(fittingDelegateType, target, info);
+
+            var p = Expression.Parameter(parameterType);
+            var call = Expression.Call(p, info);
+            var @delegate = Expression.Lambda(fittingDelegateType, call, p);
 
             var fittingMethodSubscription = typeof(MethodInvocation<>).MakeGenericType(parameterType);
-            var sub = Activator.CreateInstance(fittingMethodSubscription, @delegate);
+            var sub = Activator.CreateInstance(fittingMethodSubscription, @delegate.Compile());
 
             return (ISubscription)sub;
         }

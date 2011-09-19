@@ -21,7 +21,7 @@ namespace MemBus.Support
   /// <typeparam name="TARGET">The class that is inheriting from Context</typeparam>
   [DebuggerDisplay("{WhatDoIHave}")]
   public abstract class AbstractServices<TARGET> 
-    : IServices<TARGET>, ICloneable, IDisposable, IEnumerable<object> where TARGET : AbstractServices<TARGET>
+    : IServices<TARGET>, IDisposable, IEnumerable<object> where TARGET : AbstractServices<TARGET>
   {
 
     /// <summary>
@@ -39,7 +39,7 @@ namespace MemBus.Support
     public virtual void AddExtension<T>(T extension) where T : IServicesExtension<TARGET>
     {
       if (attachedObjects.ContainsKey(typeof(T)))
-        throw new ArgumentException(string.Format("An object of Type {0} is already attached to this context", typeof(T).Name));
+        throw new ArgumentException(string.Format("An object of Type {0} is already attached to this context", typeof(T).GetName()));
       attachedObjects.Add(typeof(T), (AttachedObject<T>)extension);
       extension.Attach((TARGET)this);
     }
@@ -97,7 +97,7 @@ namespace MemBus.Support
     public virtual void Add<T>(T @object, bool disposable)
     {
       if (attachedObjects.ContainsKey(typeof(T)))
-        throw new ArgumentException(string.Format("An object of Type {0} is already attached to this context", typeof(T).Name));
+        throw new ArgumentException(string.Format("An object of Type {0} is already attached to this context", typeof(T).GetName()));
       attachedObjects.Add(typeof(T), new AttachedObject<T>(disposable, @object));
     }
 

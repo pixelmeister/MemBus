@@ -1,5 +1,6 @@
 using System;
 using System.Text;
+using MemBus.Support;
 
 namespace MemBus.Messages
 {
@@ -43,7 +44,7 @@ namespace MemBus.Messages
 
         private static void printException(StringBuilder b, Exception x)
         {
-            b.AppendFormat("Type of Exception: {0}", x.GetType().Name);
+            b.AppendFormat("Type of Exception: {0}", x.GetTypeNameFromObject());
             b.AppendFormat("Message: {0}", x.Message);
         }
     }

@@ -41,7 +41,7 @@ namespace MemBus
         /// <summary>
         /// The Name of this message's type
         /// </summary>
-        public string Name { get { return message.GetType().Name; } }
+        public string Name { get { return message.GetTypeNameFromObject(); } }
 
     }
 }

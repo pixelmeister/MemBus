@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Linq;
 
 namespace MemBus.Support
 {
@@ -11,44 +12,39 @@ namespace MemBus.Support
     public static class ReflectionExtensions
     {
 
-        /// <summary>
-        /// Determine whether a certain custom attribute is specified on this element
-        /// </summary>
-        /// <typeparam name="T">The type of the attribute you are looking for</typeparam>
-        /// <param name="provider">Target</param>
-        /// <returns>True if this attribute is defined on this target</returns>
-        [Api]
-        public static bool HasAttribute<T>(this ICustomAttributeProvider provider) where T : Attribute
+        public static bool IsAssignableFrom(this Type assignableFrom, Type otherType) 
         {
-            var atts = provider.GetCustomAttributes(typeof(T), true);
-            return atts.Length > 0;
+            return assignableFrom.GetTypeInfo().IsAssignableFrom(otherType.GetTypeInfo());
         }
 
-
-        /// <summary>
-        /// Get a specific attribute from your target
-        /// </summary>
-        /// <typeparam name="T">The type of the attribute you are looking for</typeparam>
-        /// <param name="provider">Target</param>
-        /// <returns>The first attribute on the target that is of the desired type</returns>
-        [Api]
-        public static T GetAttribute<T>(this ICustomAttributeProvider provider) where T : Attribute
+        public static IEnumerable<MethodInfo> GetMethods(this Type type)
         {
-            var atts = provider.GetCustomAttributes(typeof(T), true);
-            return atts.Length > 0 ? atts[0] as T : null;
+            return type.GetTypeInfo().DeclaredMethods;
         }
 
-        /// <summary>
-        /// Do some work for every attribute of a desaired type
-        /// </summary>
-        /// <typeparam name="T">The desired attribute type</typeparam>
-        /// <param name="provider">Target</param>
-        /// <param name="action">An action to perform on a found attribute</param>
-        [Api]
-        public static void ForAttributesOf<T>(this ICustomAttributeProvider provider, Action<T> action) where T : Attribute
+        public static IEnumerable<Type> GetInterfaces(this Type type)
         {
-            foreach (T attribute in provider.GetCustomAttributes(typeof(T), true))
-                action(attribute);
+            return type.GetTypeInfo().ImplementedInterfaces;
+        }
+
+        public static IEnumerable<MemberInfo> GetMember(this Type type, string name)
+        {
+            return type.GetTypeInfo().DeclaredMembers.Where(mi => mi.Name.Equals(name));
+        }
+
+        public static string GetTypeNameFromObject(this object obj)
+        {
+            return obj.GetType().GetName();
+        }
+
+        public static bool IsClass(this Type type)
+        {
+            return type.GetTypeInfo().IsClass;
+        }
+
+        public static string GetName(this Type type)
+        {
+            return type.GetTypeInfo().Name;
         }
 
         /// <summary>
@@ -59,7 +55,7 @@ namespace MemBus.Support
         /// <returns>true if the interface is imaplemented</returns>
         public static bool ImplementsInterface<T>(this Type type) where T : class
         {
-            return Array.Exists(type.GetInterfaces(), t => t == typeof(T));
+            return type.GetTypeInfo().ImplementedInterfaces.Any(t => t == typeof(T));
         }
 
 

@@ -15,7 +15,7 @@ namespace MemBus.Subscribing
             var suitableMethodsFound = getRelevantMethods(interfaceType).Count() == 1;
 
             if (!suitableMethodsFound)
-                throw new InvalidOperationException("Membus cannot handle Interface {0} as subscription. Interface should define only one void method with one parameter. Interface may be generic and can be implemented multiple times.".Fmt(interfaceType.Name));
+                throw new InvalidOperationException("Membus cannot handle Interface {0} as subscription. Interface should define only one void method with one parameter. Interface may be generic and can be implemented multiple times.".Fmt(interfaceType.GetName()));
 
             if (interfaceType.IsGenericTypeDefinition)
                 innerBuilder = new OpenInterfaceBuilder(interfaceType);
