@@ -20,6 +20,7 @@ namespace MemBus
             _entryPoint.RemoveRange(subs);
             var node = _tree.AddNode(message.GetType());
             node.Subscriptions.AddRange(subs);
+            _tree.AllSubscriptionsHandling(message.GetType());
             return subs;
         }
 

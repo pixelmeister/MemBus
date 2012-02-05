@@ -61,5 +61,10 @@ namespace MemBus.Support
                 return Enumerable.Empty<TypeNode>();
             return n.AllParents();
         }
+
+        public IEnumerable<ISubscription> AllSubscriptionsHandling(Type messageType)
+        {
+            
+        }
     }
 }
